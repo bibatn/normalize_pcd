@@ -18,7 +18,7 @@ def process(in_file, out_file=''):
     pcd.remove_non_finite_points()
     xyz = pcd.points
     xyz = np.array(xyz)
-    xyz = np.split(xyz, [12829978])
+    xyz = np.split(xyz, [15000])
     splited_pcd = o3d.geometry.PointCloud()
     splited_pcd.points = o3d.utility.Vector3dVector(xyz[0])
     o3d.io.write_point_cloud(out_file, splited_pcd, write_ascii=True)
