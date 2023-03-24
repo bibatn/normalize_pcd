@@ -29,8 +29,7 @@ def process(in_file1, in_file2, out_file=''):
 
     sq_diff = np.square(diff)
     av_sq_diff = np.sum(sq_diff, 0)/len(sq_diff)
-    print("average deviation: ", av_dev, "max_diff: ", max_,
-          "min_diff: ", min_, "average square diff: ", av_sq_diff)
+    print(av_dev, " ", av_sq_diff, " ", max_, " ", min_)
 
 
 

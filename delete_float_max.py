@@ -8,20 +8,20 @@ import sys
 def normalize_pc(points):
     centroid = np.mean(points, axis=0)
     points -= centroid
-    furthest_distance = np.max(np.sqrt(np.sum(abs(points)**2,axis=-1)))
+    furthest_distance = np.max(np.sqrt(np.sum(abs(points)**2, axis=-1)))
     points /= furthest_distance
     return points
 
 
 def process(in_file, out_file=''):
     if out_file=='':
-        out_file = in_file[:-4] + '_split.pcd'
+        out_file = in_file
     pcd = o3d.io.read_point_cloud(in_file)
     pcd.remove_non_finite_points()
     xyz = pcd.points
     xyz = np.array(xyz)
     b = np.invert(np.all(xyz == [3.4028235e+38, 3.4028235e+38, 3.4028235e+38], 1))
-    xyz = xyz[b,:]
+    xyz = xyz[b, :]
     splited_pcd = o3d.geometry.PointCloud()
     splited_pcd.points = o3d.utility.Vector3dVector(xyz)
     o3d.io.write_point_cloud(out_file, splited_pcd, write_ascii=True)
